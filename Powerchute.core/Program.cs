@@ -18,7 +18,7 @@ namespace Powerchute.core
             while (true)
             {
                 byte[] recieveByte = udpClient.Receive(ref pEndPoint);
-                Console.WriteLine(string.Concat("Recieved broadcast from: ", pEndPoint.Address.ToString()));
+                Console.WriteLine("Recieved broadcast from: " + pEndPoint.Address.ToString()));
                 APCInfo info = new APCInfo();
                 string[] apcData = Encoding.ASCII.GetString(recieveByte).Split('\n');
 
@@ -72,13 +72,13 @@ namespace Powerchute.core
                 }
                 if (info.StatusFlag != 0)
                 {
-                    Console.WriteLine(string.Concat("Battery voltage: ", info.BatteryVolate.ToString("0.0", CultureInfo.InvariantCulture) + " V"));
-                    Console.WriteLine(string.Concat("Internal Temperature: ", info.InternalTemperature.ToString("0.0", CultureInfo.InvariantCulture) + " °C"));
-                    Console.WriteLine(string.Concat("Inputline Voltage: ", info.InputLineVoltage.ToString("0.0", CultureInfo.InvariantCulture) + " V"));
-                    Console.WriteLine(string.Concat("Power load: ", info.PowerLoad.ToString("0.0", CultureInfo.InvariantCulture) +  " %"));
-                    Console.WriteLine(string.Concat("Status: ", info.Flag.ToString()));
-                    Console.WriteLine(string.Concat("Battery level: ", info.BatteryLevel.ToString("0.0", CultureInfo.InvariantCulture) + " %"));
-                    Console.WriteLine(string.Concat("Estimated runtime: ", info.EstimatedRuntime.ToString(), " m"));
+                    Console.WriteLine("Battery voltage: " + info.BatteryVolate.ToString("0.0", CultureInfo.InvariantCulture) + " V"));
+                    Console.WriteLine("Internal Temperature: " + info.InternalTemperature.ToString("0.0", CultureInfo.InvariantCulture) + " °C"));
+                    Console.WriteLine("Inputline Voltage: " + info.InputLineVoltage.ToString("0.0", CultureInfo.InvariantCulture) + " V"));
+                    Console.WriteLine("Power load: " + info.PowerLoad.ToString("0.0", CultureInfo.InvariantCulture) +  " %"));
+                    Console.WriteLine("Status: " + info.Flag.ToString()));
+                    Console.WriteLine("Battery level: " + info.BatteryLevel.ToString("0.0", CultureInfo.InvariantCulture) + " %"));
+                    Console.WriteLine("Estimated runtime: " + info.EstimatedRuntime.ToString() + " m"));
                 }
                 if (info.Flag == Program.APCInfo.StatusFlags.OnBattery_OK)
                 {
